@@ -1,10 +1,27 @@
 services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: polonium
+      POSTGRES_PASSWORD: polonium
+      POSTGRES_USER: polonium
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U polonium"]
+      interval: 2s
+      timeout: 1s
+      retries: 5
+    ports:
+      - 5000:5432
+
   bot:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     restart: unless-stopped
     volumes:
       - ./bot:/bot/bot:ro
     env_file:
       - .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://polonium:polonium@postgres:5432/polonium
+    depends_on:
+      postgres:
+        condition: service_healthy

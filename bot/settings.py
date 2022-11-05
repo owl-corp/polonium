@@ -2,9 +2,11 @@ import typing
 from collections.abc import Sequence
 
 import pydantic
+import sqlalchemy.orm
 import tomlkit
 from pydantic.error_wrappers import ErrorWrapper
 from pydis_core.utils.logging import get_logger
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 
 log = get_logger(__name__)
 
@@ -71,6 +73,18 @@ class _Config(PoloniumBaseSettings):
 
     debug: bool = False
     git_sha: str = "development"
+    database_url: pydantic.SecretStr
+
+
+CONFIG = _Config()
+
+
+class Connections:
+    """How to connect to other, internal services."""
+
+    # Async engines only support future style
+    DB_ENGINE = create_async_engine(CONFIG.database_url.get_secret_value(), future=True)
+    DB_SESSION = sqlalchemy.orm.sessionmaker(DB_ENGINE, class_=AsyncSession)
 
 
 class _Bot(PoloniumBaseSettings):
@@ -95,7 +109,6 @@ class _Channels(PoloniumBaseSettings):
     dev_log: int = 1038469960537743460
 
 
-CONFIG = _Config()
 BOT = _Bot()
 ROLES = _Roles()
 CHANNELS = _Channels()
