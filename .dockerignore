@@ -5,3 +5,5 @@
 !bot
 !main-requirements.txt
 !LICENSE
+!LICENSE-THIRD-PARTY
+!pyproject.toml
