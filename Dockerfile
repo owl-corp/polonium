@@ -12,5 +12,6 @@ RUN pip install -r main-requirements.txt
 # Copy the source code in last to optimize rebuilding the image
 COPY . .
 
-ENTRYPOINT ["python"]
-CMD ["-m", "bot"]
+
+ENTRYPOINT ["/bin/bash", "-c"]
+CMD ["alembic upgrade head && python -m bot"]

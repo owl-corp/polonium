@@ -12,9 +12,15 @@ pydis_core = "9.0.0"
 colorama = { version = "0.4.6", markers = "sys_platform == 'win32'" }
 coloredlogs = "15.0.1"
 pydantic = "1.10.2"
-tomlkit = "0.11.5"
+tomlkit = "0.11.6"
+SQLAlchemy = {version = "1.4.43", extras = ["asyncio", "mypy", "postgresql_asyncpg"]}
+alembic = {version = "1.8.1", extras = ["tz"]}
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
+taskipy = "1.10.3"
+python-dotenv = "0.21.0"
+
+[tool.poetry.group.linting.dependencies]
 flake8 = "5.0.4"
 flake8-annotations = "2.9.1"
 flake8-bugbear = "22.10.27"
@@ -23,12 +29,10 @@ flake8-isort = "5.0.0"
 flake8-string-format = "0.3.0"
 flake8-tidy-imports = "4.8.0"
 flake8-todo = "0.7"
-
 black = "22.10.0"
 pep8-naming = "0.13.2"
-poetry-plugin-export = "1.1.2"
+poetry-plugin-export = "1.2.0"
 pre-commit = "2.20.0"
-taskipy = "1.10.3"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -39,6 +43,8 @@ start = "python -m bot"
 lint = "pre-commit run --all-files"
 precommit = "pre-commit install"
 isort = "isort ."
+revision = "alembic revision --autogenerate -m"
+migrate = "alembic upgrade head"
 
 [tool.isort]
 profile = "black"

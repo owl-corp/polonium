@@ -3,7 +3,9 @@
 
 # Except what we need
 !bot
+!migrations
+!pyproject.toml
 !main-requirements.txt
 !LICENSE
 !LICENSE-THIRD-PARTY
-!pyproject.toml
+!alembic.ini
