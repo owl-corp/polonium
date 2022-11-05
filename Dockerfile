@@ -5,7 +5,7 @@ ARG git_sha="development"
 ENV GIT_SHA=$git_sha
 
 # Install project dependencies
-WORKDIR /app
+WORKDIR /bot
 COPY main-requirements.txt ./
 RUN pip install -r main-requirements.txt
 
@@ -13,4 +13,4 @@ RUN pip install -r main-requirements.txt
 COPY . .
 
 ENTRYPOINT ["python"]
-CMD ["-m", "app"]
+CMD ["-m", "bot"]
