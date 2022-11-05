@@ -1,37 +1,40 @@
 [tool.poetry]
-name = "python-template"
-version = "1.0.0"
-description = "A template project for Python applications."
+name = "Polonium"
+version = "0.1.0"
+description = "A work in progress project."
 authors = ["Chris Lovering <chris.lovering.95@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "3.11.*"
+python = "3.10.*"
 
-pydantic = "*"
+bot-core = { url = "https://github.com/python-discord/bot-core/archive/refs/tags/v8.2.1.zip" }
+colorama = { version = "0.4.6", markers = "sys_platform == 'win32'" }
+coloredlogs = "15.0.1"
+pydantic = "1.10.2"
 
 [tool.poetry.dev-dependencies]
-flake8 = "*"
-flake8-annotations = "*"
-flake8-bugbear = "*"
-flake8-docstrings = "*"
-flake8-string-format = "*"
-flake8-tidy-imports = "*"
-flake8-todo = "*"
-flake8-isort = "*"
-poetry-plugin-export = "*"
+flake8 = "5.0.4"
+flake8-annotations = "2.9.1"
+flake8-bugbear = "22.10.27"
+flake8-docstrings = "1.6.0"
+flake8-isort = "5.0.0"
+flake8-string-format = "0.3.0"
+flake8-tidy-imports = "4.8.0"
+flake8-todo = "0.7"
 
-black = "*"
-pep8-naming = "*"
-pre-commit = "*"
-taskipy = "*"
+black = "22.10.0"
+pep8-naming = "0.13.2"
+poetry-plugin-export = "1.1.2"
+pre-commit = "2.20.0"
+taskipy = "1.10.3"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.taskipy.tasks]
-start = "python -m app"
+start = "python -m bot"
 lint = "pre-commit run --all-files"
 precommit = "pre-commit install"
 isort = "isort ."
