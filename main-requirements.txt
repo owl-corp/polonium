@@ -400,6 +400,9 @@ pyreadline3==3.4.1 ; sys_platform == "win32" and python_full_version >= "3.10.0"
 statsd==3.3.0 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
     --hash=sha256:c610fb80347fca0ef62666d241bce64184bd7cc1efe582f9690e045c25535eaa \
     --hash=sha256:e3e6db4c246f7c59003e51c9720a51a7f39a396541cb9b147ff4b14d15b5dd1f
+tomlkit==0.11.5 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
+    --hash=sha256:571854ebbb5eac89abcb4a2e47d7ea27b89bf29e09c35395da6f03dd4ae23d1c \
+    --hash=sha256:f2ef9da9cef846ee027947dc99a45d6b68a63b0ebc21944649505bf2e8bc5fe7
 typing-extensions==4.4.0 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
     --hash=sha256:1511434bb92bf8dd198c12b1cc812e800d4181cfcb867674e0f8279cc93087aa \
     --hash=sha256:16fa4864408f655d35ec496218b85f79b3437c829e93320c7c9215ccfd92489e
