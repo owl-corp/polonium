@@ -98,7 +98,6 @@ async-timeout==4.0.2 ; python_full_version >= "3.10.0" and python_full_version <
 attrs==22.1.0 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
     --hash=sha256:29adc2665447e5191d0e7c568fde78b21f9672d344281d0c6e1ab085429b22b6 \
     --hash=sha256:86efa402f67bf2df34f51a335487cf46b1ec130d02b8d39fd248abfd30da551c
-bot-core @ https://github.com/python-discord/bot-core/archive/refs/tags/v8.2.1.zip ; python_full_version >= "3.10.0" and python_full_version < "3.11.0"
 cffi==1.15.1 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
     --hash=sha256:00a9ed42e88df81ffae7a8ab6d9356b371399b91dbdf0c3cb1e84c03a13aceb5 \
     --hash=sha256:03425bdae262c76aad70202debd780501fabeaca237cdfddc008987c0e0f59ef \
@@ -392,6 +391,9 @@ pydantic==1.10.2 ; python_full_version >= "3.10.0" and python_full_version < "3.
     --hash=sha256:dd3f9a40c16daf323cf913593083698caee97df2804aa36c4b3175d5ac1b92a2 \
     --hash=sha256:e0bedafe4bc165ad0a56ac0bd7695df25c50f76961da29c050712596cf092d6d \
     --hash=sha256:e9069e1b01525a96e6ff49e25876d90d5a563bc31c658289a8772ae186552236
+pydis-core==9.0.0 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
+    --hash=sha256:636000c0c37339df03720c06af38e8b71db1b80f0e9ac830ae898664da9c183b \
+    --hash=sha256:ab347ad11e4c6064a03d8ee56cffc26066843fb8a3eb5fc5507d5fa1cc02e00d
 pyreadline3==3.4.1 ; sys_platform == "win32" and python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
     --hash=sha256:6f3d1f7b8a31ba32b73917cefc1f28cc660562f39aea8646d30bd6eff21f7bae \
     --hash=sha256:b0efb6516fd4fb07b45949053826a62fa4cb353db5be2bbb4a7aa1fdd1e345fb

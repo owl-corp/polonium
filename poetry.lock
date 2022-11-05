@@ -84,25 +84,6 @@ jupyter = ["ipython (>=7.8.0)", "tokenize-rt (>=3.2.0)"]
 uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
-name = "bot-core"
-version = "8.2.1"
-description = "Bot-Core provides the core functionality and utilities for the bots of the Python Discord community."
-category = "main"
-optional = false
-python-versions = "3.10.*"
-
-[package.dependencies]
-aiodns = "3.0.0"
-"discord.py" = "2.0.1"
-statsd = "3.3.0"
-
-[package.extras]
-async-rediscache = ["async-rediscache[fakeredis] (==1.0.0rc2)"]
-
-[package.source]
-type = "url"
-url = "https://github.com/python-discord/bot-core/archive/refs/tags/v8.2.1.zip"
-[[package]]
 name = "cachecontrol"
 version = "0.12.11"
 description = "httplib2 caching for requests"
@@ -527,7 +508,7 @@ format-nongpl = ["fqdn", "idna", "isoduration", "jsonpointer (>1.13)", "rfc3339-
 
 [[package]]
 name = "keyring"
-version = "23.10.0"
+version = "23.11.0"
 description = "Store and access your passwords safely."
 category = "dev"
 optional = false
@@ -805,6 +786,22 @@ typing-extensions = ">=4.1.0"
 [package.extras]
 dotenv = ["python-dotenv (>=0.10.4)"]
 email = ["email-validator (>=1.0.3)"]
+
+[[package]]
+name = "pydis-core"
+version = "9.0.0"
+description = "PyDis core provides core functionality and utility to the bots of the Python Discord community."
+category = "main"
+optional = false
+python-versions = ">=3.10.0,<3.11.0"
+
+[package.dependencies]
+aiodns = "3.0.0"
+"discord.py" = "2.0.1"
+statsd = "3.3.0"
+
+[package.extras]
+async-rediscache = ["async-rediscache[fakeredis] (==1.0.0rc2)"]
 
 [[package]]
 name = "pydocstyle"
@@ -1087,7 +1084,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.10.*"
-content-hash = "a1da51c0f21121ad612261d091450e7d5aa05263766c7ef28654382a0d0b417b"
+content-hash = "38df0c217e17f713645bffdd6f55f458d75dfaf8107f36d29c6b936ae35a7c1e"
 
 [metadata.files]
 aiodns = [
@@ -1218,7 +1215,6 @@ black = [
     {file = "black-22.10.0-py3-none-any.whl", hash = "sha256:c957b2b4ea88587b46cf49d1dc17681c1e672864fd7af32fc1e9664d572b3458"},
     {file = "black-22.10.0.tar.gz", hash = "sha256:f513588da599943e0cde4e32cc9879e825d58720d6557062d1098c5ad80080e1"},
 ]
-bot-core = []
 cachecontrol = [
     {file = "CacheControl-0.12.11-py2.py3-none-any.whl", hash = "sha256:2c75d6a8938cb1933c75c50184549ad42728a27e9f6b92fd677c3151aa72555b"},
     {file = "CacheControl-0.12.11.tar.gz", hash = "sha256:a5b9fcc986b184db101aa280b42ecdcdfc524892596f606858e0b7a8b4d9e144"},
@@ -1559,8 +1555,8 @@ jsonschema = [
     {file = "jsonschema-4.17.0.tar.gz", hash = "sha256:5bfcf2bca16a087ade17e02b282d34af7ccd749ef76241e7f9bd7c0cb8a9424d"},
 ]
 keyring = [
-    {file = "keyring-23.10.0-py3-none-any.whl", hash = "sha256:373e29a1bda7f42247c0db0fa13026c770fa8ff995a7475769357e48743761df"},
-    {file = "keyring-23.10.0.tar.gz", hash = "sha256:6f457494bb207053c97443656e92ebcc4e2957c5c529028d9eaf4daf40a94483"},
+    {file = "keyring-23.11.0-py3-none-any.whl", hash = "sha256:3dd30011d555f1345dec2c262f0153f2f0ca6bca041fb1dc4588349bb4c0ac1e"},
+    {file = "keyring-23.11.0.tar.gz", hash = "sha256:ad192263e2cdd5f12875dedc2da13534359a7e760e77f8d04b50968a821c2361"},
 ]
 lockfile = [
     {file = "lockfile-0.12.2-py2.py3-none-any.whl", hash = "sha256:6c3cb24f344923d30b2785d5ad75182c8ea7ac1b6171b08657258ec7429d50fa"},
@@ -1879,6 +1875,10 @@ pydantic = [
     {file = "pydantic-1.10.2-cp39-cp39-win_amd64.whl", hash = "sha256:c1ba1afb396148bbc70e9eaa8c06c1716fdddabaf86e7027c5988bae2a829ab6"},
     {file = "pydantic-1.10.2-py3-none-any.whl", hash = "sha256:1b6ee725bd6e83ec78b1aa32c5b1fa67a3a65badddde3976bca5fe4568f27709"},
     {file = "pydantic-1.10.2.tar.gz", hash = "sha256:91b8e218852ef6007c2b98cd861601c6a09f1aa32bbbb74fab5b1c33d4a1e410"},
+]
+pydis-core = [
+    {file = "pydis_core-9.0.0-py3-none-any.whl", hash = "sha256:ab347ad11e4c6064a03d8ee56cffc26066843fb8a3eb5fc5507d5fa1cc02e00d"},
+    {file = "pydis_core-9.0.0.tar.gz", hash = "sha256:636000c0c37339df03720c06af38e8b71db1b80f0e9ac830ae898664da9c183b"},
 ]
 pydocstyle = [
     {file = "pydocstyle-6.1.1-py3-none-any.whl", hash = "sha256:6987826d6775056839940041beef5c08cc7e3d71d63149b48e36727f70144dc4"},
