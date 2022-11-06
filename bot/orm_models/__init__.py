@@ -1,3 +1,4 @@
 """Database models."""
 
-from .snippets import Snippet  # noqa: F401
+from .posts import Post
+from .snippets import Snippet
