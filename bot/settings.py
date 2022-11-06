@@ -1,6 +1,7 @@
 import typing
 from collections.abc import Sequence
 
+import discord
 import pydantic
 import sqlalchemy.orm
 import tomlkit
@@ -107,8 +108,17 @@ class _Channels(PoloniumBaseSettings):
     """Settings for Discord roles required by the bot."""
 
     dev_log: int = 1038469960537743460
+    mail_forum: int = 1038592814751162378
+
+
+class _Posts(PoloniumBaseSettings):
+    """Settings specific to posts in the mail forum."""
+
+    mod_embed_colour: int = discord.Colour.green().value
+    user_embed_colour: int = discord.Colour.gold().value
 
 
 BOT = _Bot()
 ROLES = _Roles()
 CHANNELS = _Channels()
+POSTS = _Posts()
