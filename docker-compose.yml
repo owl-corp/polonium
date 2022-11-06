@@ -18,6 +18,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./bot:/bot/bot:ro
+      - ./migrations:/bot/migrations:ro
+      - ./pyproject.toml:/bot/pyproject.toml:ro
     env_file:
       - .env
     environment:
