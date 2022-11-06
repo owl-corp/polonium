@@ -1,5 +1,7 @@
 """Extension to manage posts to the mail forum."""
 
+import datetime
+
 import discord
 from discord.ext import commands
 from discord.ext.commands import Cog
@@ -36,6 +38,18 @@ class PostManager(Cog):
         await _message.send_dm_from_post(ctx.channel, embed)
         await ctx.send(embed=embed)
         await ctx.message.delete()
+
+    @Cog.listener()
+    async def on_typing(
+        self, channel: discord.abc.Messageable, user: discord.Member | discord.User, when: datetime.datetime
+    ) -> None:
+        """Forward typing events to posts if the user has an open post."""
+        if not isinstance(channel, discord.DMChannel) or not isinstance(user, discord.User):
+            # Early return for in-guild typing events, and fix typing for `user`.
+            return
+        post = await _post.get_active_post(self.mail_forum, user)
+        if post:
+            await post.typing()
 
     @Cog.listener()
     async def on_message(self, message: discord.Message) -> None:

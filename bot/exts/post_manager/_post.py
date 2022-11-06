@@ -9,8 +9,10 @@ from bot.settings import Connections
 log = get_logger(__name__)
 
 
-async def get_active_post(forum_channel: discord.ForumChannel, member: discord.Member) -> discord.Thread | None:
-    """Returns the active post for a member, if they have one."""
+async def get_active_post(
+    forum_channel: discord.ForumChannel, member: discord.Member | discord.User
+) -> discord.Thread | None:
+    """Returns the active post for a member/user, if they have one."""
     async with Connections.DB_SESSION.begin() as session:
         db_most_recent_post: Post | None = await session.scalar(
             select(Post).where(Post.user_id == member.id).order_by(Post.post_id.desc())
