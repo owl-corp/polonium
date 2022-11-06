@@ -64,7 +64,7 @@ class PostManager(Cog):
 
         post = await _post.get_active_post(self.mail_forum, member)
         if not post:
-            post = await _post.maybe_create_post(self.mail_forum, member_info)
+            post = await _post.maybe_create_post(self.mail_forum, member_info, message)
             if not post:
                 return
 

@@ -25,33 +25,24 @@ async def get_active_post(
     return None
 
 
-async def create_post(forum_channel: discord.ForumChannel, member_info: _member.MemberInfo) -> discord.Thread:
+async def create_post(
+    forum_channel: discord.ForumChannel, post_title: str, opener_message: discord.Message
+) -> discord.Thread:
     """Creates a post in `forum_channel` for the `member`."""
-    embed = member_info.get_base_member_embed()
-    embed.description = (
-        f"{member_info.member.mention} was created {member_info.created_timestamp}, "
-        f"joined {member_info.joined_timestamp} and has **{len(member_info.previous_posts)}** past posts."
-    )
-    if roles := member_info.member.roles[1:]:
-        embed.add_field(name="Roles", value=" ".join(role.mention for role in roles))
-
+    opener_message_content = f"{opener_message.author.mention}:\n\n{opener_message.content}"[:1500]
     try:
-        thread_with_message = await forum_channel.create_thread(
-            name=member_info.default_post_title, content="You've got mail!", embed=embed
-        )
-    except discord.HTTPException:
+        thread_with_message = await forum_channel.create_thread(name=post_title, content=opener_message_content)
+    except discord.HTTPException as e:
         # To handle users with names that trip Discord's bad name filter.
-        thread_with_message = await forum_channel.create_thread(
-            name="Name-unsuitable", content="You've got mail!", embed=embed
-        )
+        log.info(str(e))
+        thread_with_message = await forum_channel.create_thread(name="Name-unsuitable", content=opener_message_content)
     async with Connections.DB_SESSION.begin() as session:
-        session.add(Post(user_id=member_info.member.id, forum_post_id=thread_with_message.thread.id))
+        session.add(Post(user_id=opener_message.author.id, forum_post_id=thread_with_message.thread.id))
     return thread_with_message.thread
 
 
 async def maybe_create_post(
-    forum_channel: discord.ForumChannel,
-    member_info: _member.MemberInfo,
+    forum_channel: discord.ForumChannel, member_info: _member.MemberInfo, opening_message: discord.message
 ) -> discord.Thread | None:
     """Creates a post in `forum_channel` for the `member` after confirming with a button interaction."""
     view = _views.PostOpenConfirmation()
@@ -61,4 +52,13 @@ async def maybe_create_post(
     view.message = message
     if await view.wait() or not view.confirmed:
         return None
-    return await create_post(forum_channel, member_info)
+    post = await create_post(forum_channel, member_info.default_post_title, opening_message)
+    embed = member_info.get_base_member_embed()
+    embed.description = (
+        f"{member_info.member.mention} was created {member_info.created_timestamp}, "
+        f"joined {member_info.joined_timestamp} and has **{len(member_info.previous_posts)}** past posts."
+    )
+    if roles := member_info.member.roles[1:]:
+        embed.add_field(name="Roles", value=" ".join(role.mention for role in roles))
+    await post.send(embed=embed)
+    return post
