@@ -24,8 +24,9 @@ def upgrade() -> None:
         sa.Column("user_id", sa.BigInteger(), nullable=False),
         sa.Column("forum_post_id", sa.BigInteger(), nullable=False),
         sa.PrimaryKeyConstraint("post_id", name=op.f("posts_pk")),
-        sa.UniqueConstraint("forum_post_id", name=op.f("posts_forum_post_id_uq")),
     )
+    op.create_index(op.f("posts_forum_post_id_ix"), "posts", ["forum_post_id"], unique=True)
+    op.create_index(op.f("posts_user_id_ix"), "posts", ["user_id"], unique=False)
     # ### end Alembic commands ###
 
 

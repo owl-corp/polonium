@@ -11,5 +11,5 @@ class Snippet(Base):
     __tablename__ = "snippets"
 
     snippet_id: int = Column(Integer, primary_key=True)
-    name: str = Column(Text, nullable=False, unique=True)
+    name: str = Column(Text, nullable=False, unique=True, index=True)
     text: str = Column(Text, nullable=False)

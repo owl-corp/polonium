@@ -24,8 +24,8 @@ def upgrade() -> None:
         sa.Column("name", sa.Text(), nullable=False),
         sa.Column("text", sa.Text(), nullable=False),
         sa.PrimaryKeyConstraint("snippet_id", name=op.f("snippets_pk")),
-        sa.UniqueConstraint("name", name=op.f("snippets_name_uq")),
     )
+    op.create_index(op.f("snippets_name_ix"), "snippets", ["name"], unique=True)
     # ### end Alembic commands ###
 
 
