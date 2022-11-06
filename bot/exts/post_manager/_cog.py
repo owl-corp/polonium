@@ -32,7 +32,7 @@ class PostManager(Cog):
     @commands.command("reply", aliases=("r",))
     async def reply_to_post(self, ctx: commands.Context, *, content: str) -> None:
         """Allows mods to send a DM reply to a post opener."""
-        if not ctx.channel.parent or ctx.channel.parent != self.mail_forum:
+        if not getattr(ctx.channel, "parent", None) or ctx.channel.parent != self.mail_forum:
             return
         embed = _message.build_mod_message_embed(ctx.author, content)
         await _message.send_dm_from_post(ctx.channel, embed)
