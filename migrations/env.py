@@ -4,7 +4,7 @@ import logging
 from alembic import context
 from sqlalchemy.engine import Connection
 
-from bot.orm_models.base import Base
+from bot.database.orm_models.base import Base
 from bot.settings import CONFIG, Connections
 
 # this is the Alembic Config object, which provides
