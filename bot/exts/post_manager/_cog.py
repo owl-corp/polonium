@@ -9,6 +9,7 @@ from pydis_core.utils.logging import get_logger
 from pydis_core.utils.members import get_or_fetch_member
 
 from bot.bot import Bot
+from bot.database import posts
 from bot.exts.post_manager import _member, _message, _post
 from bot.settings import CHANNELS
 
@@ -35,7 +36,11 @@ class PostManager(Cog):
         if not getattr(ctx.channel, "parent", None) or ctx.channel.parent != self.mail_forum:
             return
         embed = _message.build_mod_message_embed(ctx.author, content)
-        await _message.send_dm_from_post(ctx.channel, embed)
+        try:
+            await _message.send_dm_from_post(ctx.channel, embed)
+        except posts.PostNotFoundError:
+            await ctx.send(":x: Could not find recipient for current post.")
+            return
         await ctx.send(embed=embed)
         await ctx.message.delete()
 

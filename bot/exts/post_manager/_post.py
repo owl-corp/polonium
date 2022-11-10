@@ -1,10 +1,8 @@
 import discord
 from pydis_core.utils.logging import get_logger
-from sqlalchemy import select
 
+from bot.database import posts
 from bot.exts.post_manager import _member, _strings, _views
-from bot.orm_models import Post
-from bot.settings import Connections
 
 log = get_logger(__name__)
 
@@ -13,16 +11,14 @@ async def get_active_post(
     forum_channel: discord.ForumChannel, member: discord.Member | discord.User
 ) -> discord.Thread | None:
     """Returns the active post for a member/user, if they have one."""
-    async with Connections.DB_SESSION.begin() as session:
-        db_most_recent_post: Post | None = await session.scalar(
-            select(Post).where(Post.user_id == member.id).order_by(Post.post_id.desc())
-        )
+    try:
+        db_most_recent_post = await posts.get_user_most_recent_post(member.id)
+    except posts.PostNotFoundError:
+        return None
 
-        if db_most_recent_post:
-            most_recent_post = forum_channel.guild.get_thread(db_most_recent_post.forum_post_id)
-            if most_recent_post and not most_recent_post.archived:
-                return most_recent_post
-    return None
+    most_recent_post = forum_channel.guild.get_thread(db_most_recent_post.forum_post_id)
+    if most_recent_post and not most_recent_post.archived:
+        return most_recent_post
 
 
 async def create_post(
@@ -36,8 +32,7 @@ async def create_post(
         # To handle users with names that trip Discord's bad name filter.
         log.info(str(e))
         thread_with_message = await forum_channel.create_thread(name="Name-unsuitable", content=opener_message_content)
-    async with Connections.DB_SESSION.begin() as session:
-        session.add(Post(user_id=opener_message.author.id, forum_post_id=thread_with_message.thread.id))
+    await posts.create_post(opener_message.author.id, thread_with_message.thread.id)
     return thread_with_message.thread
 
 

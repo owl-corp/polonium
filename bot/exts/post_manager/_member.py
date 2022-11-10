@@ -2,10 +2,9 @@ import string
 from dataclasses import dataclass, field
 
 import discord
-from sqlalchemy import select
 
-from bot.orm_models import Post
-from bot.settings import POSTS, Connections
+from bot.database import posts
+from bot.settings import POSTS
 
 
 @dataclass(frozen=True)
@@ -54,6 +53,5 @@ class MemberInfo:
 
 async def get_member_info(member: discord.Member) -> MemberInfo:
     """Returns the info about this member and their interactions with the bot."""
-    async with Connections.DB_SESSION.begin() as session:
-        member_posts: list[Post] = await session.scalars(select(Post).where(Post.user_id == member.id))
-        return MemberInfo(member=member, previous_posts=[post.post_id for post in member_posts])
+    member_posts = await posts.get_posts_by_user_id(member.id)
+    return MemberInfo(member=member, previous_posts=[post.post_id for post in member_posts])
