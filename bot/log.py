@@ -1,9 +1,9 @@
-import logging
 import os
 import sys
+from logging import INFO, WARNING, StreamHandler
 
 import coloredlogs
-from pydis_core.utils.logging import get_logger
+from pydis_core.utils import logging
 
 from bot.settings import CONFIG
 
@@ -11,12 +11,12 @@ from bot.settings import CONFIG
 def setup_logging() -> None:
     """Setup logging for the bot."""
     # Console handler prints to terminal
-    console_handler = logging.StreamHandler()
-    level = logging.DEBUG if CONFIG.debug else logging.INFO
+    console_handler = StreamHandler()
+    level = logging.TRACE_LEVEL if CONFIG.debug else INFO
     console_handler.setLevel(level)
 
     # Remove old loggers, if any
-    root = logging.getLogger()
+    root = logging.get_logger()
     if root.handlers:
         for handler in root.handlers:
             root.removeHandler(handler)
@@ -33,5 +33,6 @@ def setup_logging() -> None:
     if "COLOREDLOGS_LOG_FORMAT" not in os.environ:
         coloredlogs.DEFAULT_LOG_FORMAT = "%(asctime)s | %(name)s | %(levelname)s | %(message)s"
 
-    coloredlogs.install(logger=root, stream=sys.stdout)
-    get_logger("discord").setLevel(logging.WARNING)
+    coloredlogs.install(level=level, logger=root, stream=sys.stdout)
+    logging.get_logger("discord").setLevel(WARNING)
+    logging.get_logger("asyncio").setLevel(WARNING)
