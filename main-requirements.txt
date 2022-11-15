@@ -212,9 +212,9 @@ colorama==0.4.6 ; python_full_version >= "3.10.0" and python_full_version < "3.1
 coloredlogs==15.0.1 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
     --hash=sha256:612ee75c546f53e92e70049c9dbfcc18c935a2b9a53b66085ce9ef6a6e5c0934 \
     --hash=sha256:7c991aa71a4577af2f82600d8f8f3a89f936baeaf9b50a9c197da014e5bf16b0
-discord-py==2.0.1 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
-    --hash=sha256:309146476e986cb8faf038cd5d604d4b3834ef15c2d34df697ce5064bf5cd779 \
-    --hash=sha256:aeb186348bf011708b085b2715cf92bbb72c692eb4f59c4c0b488130cc4c4b7e
+discord-py==2.1.0 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
+    --hash=sha256:027ccdd22b5bb66a9e19cbd8daa1bc74b49271a16a074d57e52f288fcfa208e8 \
+    --hash=sha256:a2cfa9f09e3013aaaa43600cc8dfaf67c532dd34afcb71e550f5a0dc9133a5e0
 frozenlist==1.3.3 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
     --hash=sha256:008a054b75d77c995ea26629ab3a0c0d7281341f2fa7e1e85fa6153ae29ae99c \
     --hash=sha256:02c9ac843e3390826a265e331105efeab489ffaf4dd86384595ee8ce6d35ae7f \
@@ -551,9 +551,9 @@ pydantic==1.10.2 ; python_full_version >= "3.10.0" and python_full_version < "3.
     --hash=sha256:dd3f9a40c16daf323cf913593083698caee97df2804aa36c4b3175d5ac1b92a2 \
     --hash=sha256:e0bedafe4bc165ad0a56ac0bd7695df25c50f76961da29c050712596cf092d6d \
     --hash=sha256:e9069e1b01525a96e6ff49e25876d90d5a563bc31c658289a8772ae186552236
-pydis-core==9.0.0 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
-    --hash=sha256:636000c0c37339df03720c06af38e8b71db1b80f0e9ac830ae898664da9c183b \
-    --hash=sha256:ab347ad11e4c6064a03d8ee56cffc26066843fb8a3eb5fc5507d5fa1cc02e00d
+pydis-core==9.1.1 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
+    --hash=sha256:a73fe400d9b7cea5d87cfb53d1bb9ca8fd7fd3b48c1c1b74c43117319acefdac \
+    --hash=sha256:db6e29c8eb4c12ce29fbf57f7b7214a1bdf702f9464320f4c39fef4dc8741bc0
 pyreadline3==3.4.1 ; sys_platform == "win32" and python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
     --hash=sha256:6f3d1f7b8a31ba32b73917cefc1f28cc660562f39aea8646d30bd6eff21f7bae \
     --hash=sha256:b0efb6516fd4fb07b45949053826a62fa4cb353db5be2bbb4a7aa1fdd1e345fb
@@ -647,9 +647,9 @@ sqlalchemy[asyncio,postgresql-asyncpg]==1.4.43 ; python_full_version >= "3.10.0"
     --hash=sha256:f6e036714a586f757a3e12ff0798ce9a90aa04a60cff392d8bcacc5ecf79c95e \
     --hash=sha256:fa46d86a17cccd48c6762df1a60aecf5aaa2e0c0973efacf146c637694b62ffd \
     --hash=sha256:fb9a44e7124f72b79023ab04e1c8fcd8f392939ef0d7a75beae8634e15605d30
-statsd==3.3.0 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
-    --hash=sha256:c610fb80347fca0ef62666d241bce64184bd7cc1efe582f9690e045c25535eaa \
-    --hash=sha256:e3e6db4c246f7c59003e51c9720a51a7f39a396541cb9b147ff4b14d15b5dd1f
+statsd==4.0.1 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
+    --hash=sha256:99763da81bfea8daf6b3d22d11aaccb01a8d0f52ea521daab37e758a4ca7d128 \
+    --hash=sha256:c2676519927f7afade3723aca9ca8ea986ef5b059556a980a867721ca69df093
 tomlkit==0.11.6 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
     --hash=sha256:07de26b0d8cfc18f871aec595fda24d95b08fef89d147caa861939f37230bf4b \
     --hash=sha256:71b952e5721688937fb02cf9d354dbcf0785066149d2855e44531ebdd2b65d73

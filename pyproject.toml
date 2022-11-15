@@ -8,7 +8,7 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "3.10.*"
 
-pydis_core = "9.0.0"
+pydis_core = "9.1.1"
 colorama = { version = "0.4.6", markers = "sys_platform == 'win32'" }
 coloredlogs = "15.0.1"
 pydantic = "1.10.2"
