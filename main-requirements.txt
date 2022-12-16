@@ -92,9 +92,9 @@ aiohttp==3.8.3 ; python_full_version >= "3.10.0" and python_full_version < "3.11
 aiosignal==1.3.1 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
     --hash=sha256:54cd96e15e1649b75d6c87526a6ff0b6c1b0dd3459f43d9ca11d48c339b68cfc \
     --hash=sha256:f8376fb07dd1e86a584e4fcdec80b36b7f81aac666ebc724e2c090300dd83b17
-alembic[tz]==1.8.1 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
-    --hash=sha256:0a024d7f2de88d738d7395ff866997314c837be6104e90c5724350313dee4da4 \
-    --hash=sha256:cd0b5e45b14b706426b833f06369b9a6d5ee03f826ec3238723ce8caaf6e5ffa
+alembic[tz]==1.9.0 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
+    --hash=sha256:6af6792fe699730b27480382701b16028ebbaac6bc5cd4f06daf5fa3e4690364 \
+    --hash=sha256:e8ce855f731d92cfdbf9a71d148401fcc420399927817c6e2c0b6a5f31db745d
 async-timeout==4.0.2 ; python_full_version >= "3.10.0" and python_full_version < "3.11.0" \
     --hash=sha256:2163e1640ddb52b7a8c80d0a67a08587e5d245cc9c553a74a847056bc2976b15 \
     --hash=sha256:8ca1e4fcf50d07413d66d1a5e416e42cfdf5851c981d679a09851a6853383b3c
